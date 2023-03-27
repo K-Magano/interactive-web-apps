@@ -1,5 +1,4 @@
 :root{
-    --color-green: #31c48d;
     --color-peach: #F8B195;
     --color-dark-pink: #C06C84;
     --color-dark-purple: #6c5b7b;
@@ -43,8 +42,19 @@ body{
 
 aside{
   font-family: cursive;
-  background: var(--color-green);
+  background: var(--color-dark-purple);
   color: var(--color-light-grey);
+  margin: 1.5rem;
+}
+
+.Select
+{
+  background: var(--color-peach);
+  font-family: cursive;
+  color: var(--color-dark-purple);
+  border: none;
+  border-radius: 5%;
+  padding: 0.2rem;
 }
 /* Controls */
 .Controls {
@@ -105,7 +115,7 @@ aside{
     background: var(--color-dark-pink);
     color: var(--color-peach);
     padding: 2rem;
-    font-size: 0.9rem;
+    font-size: 1.5rem;
     text-align: center;
 
     
@@ -118,5 +128,5 @@ aside{
     text-decoration: none;
     cursor: pointer;
     font-family: Caveat, cursive;
-    font-size: 1rem;
+    font-size: 1.5rem;
 }
