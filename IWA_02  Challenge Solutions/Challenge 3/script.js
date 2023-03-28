@@ -10,9 +10,6 @@ The  (//) were not validating the comment It is important to show the following
 */
 
 
-
-
-
 console.warn('Security scan starting')
 
 /* It is important to let user know when they can close the page*/ 
