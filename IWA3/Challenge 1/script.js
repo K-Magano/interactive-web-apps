@@ -2,13 +2,18 @@
 
 // scripts.js
 //**Company and year needed to be in {} and .js at the end of configure.
-import { company } from 'configuration.js'
-import { year } from 'configuration.js' 
+import { company } from './config.js'
+import { year } from './config.js' 
 
-const message = '© ' + company + ' (' + year + ')'
-const msg = document.querySelector('footer').innerText = message
+
+
+ const message = document.getElementById("footer")
+ message.innerText =  company + " " + year //This was hard 😥
+
  
- console.log(msg)
+
+ 
+
 
 
 
