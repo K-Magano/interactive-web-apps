@@ -40,8 +40,10 @@ const date = '10/07/2014'
 
 console.log(date)
 
+console.warn('Security scan starting')
+console.info('Please wait for scan to complete before closing the browser.')
 
-
+console.log()
 
 
 

@@ -1,11 +1,12 @@
 // Johannes.js
 
-export const firstname = 'Johannes';
-export const role = "Intern"
+export const firstname = 'Nwabisa';
+export const role = "CEO"
 
-const  firstname = "Johannes"
-private surname = "Potgieter"
+
+const firstname = "Johannes"
+const surname = "Potgieter"
 const role = "Intern"
 
-private display= firstname + " " + surname + " (" + role + ")"
+const display= firstname + " " + surname + " (" + role + ")"
 document.querySelector('#Johannes').innerText = display

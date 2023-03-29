@@ -5,7 +5,7 @@ export const role = "CEO"
 
 
 const firstname = "Nwabisa"
-private surname = "Gabe"
+const surname = "Gabe"
 const role = "CEO"
 
 display = firstname + " " + role

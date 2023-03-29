@@ -18,7 +18,7 @@ console.warn('Security scan starting')
 
 /*
 *Comments by Keo. 
-in the comment, (*) was on the wrong side of the comment.
+in the(*) was on the wrong side of the comment.
 the warning is now placed in (' ') */
 
 console.info('Please wait for scan to complete before closing the browser.')
