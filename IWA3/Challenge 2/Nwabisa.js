@@ -1,13 +1,12 @@
-// nwabisa.js
+// Nwabisa.js
 
-const firstname2 = "Nwabisa"
-const hidden2  = "Gabe"
-const  role2 = "CEO"
+export const firstname = 'Nwabisa';
+export const role = "CEO"
 
-const display= firstname2 + " " + hidden2 + " (" + role2 + ")"
+
+const firstname = "Nwabisa"
+private surname = "Gabe"
+const role = "CEO"
+
+display = firstname + " " + role
 document.querySelector('#Nwabisa').innerText = display
-
-console.log(display)
-
-
-

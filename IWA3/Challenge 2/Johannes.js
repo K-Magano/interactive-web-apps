@@ -1,8 +1,11 @@
-// johannes.js
+// Johannes.js
 
-const firstname = "Johannes"
-const hidden = "Potgieter" //changed public to hidden
+export const firstname = 'Johannes';
+export const role = "Intern"
+
+const  firstname = "Johannes"
+private surname = "Potgieter"
 const role = "Intern"
 
-const display= firstname + " " + hidden + " (" + role + ")"
+private display= firstname + " " + surname + " (" + role + ")"
 document.querySelector('#Johannes').innerText = display
