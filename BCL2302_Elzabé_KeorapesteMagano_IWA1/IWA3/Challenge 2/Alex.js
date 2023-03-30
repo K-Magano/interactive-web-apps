@@ -1,12 +1,10 @@
 // Alex.js
-export const firstname = 'Alex';
-export const role = "Marketing Manager"
+ const firstname = 'Alex';
+ const Surname = 'Gannie'
+export const roleM = "Marketing Manager"
 
-const firstname = "Alex"
-const surname = "Dom"
-const role = "Marketing"
 
-display= firstname + " " + surname + " (" + role + ")"
+const display = firstname + roleM 
 document.querySelector('#Alex').innerText = display
 
 

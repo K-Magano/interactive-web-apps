@@ -1,12 +1,14 @@
 // Nwabisa.js
 
-export const firstname = 'Nwabisa';
-export const role = "CEO"
+//export const firstname = 'Nwabisa';
+
 
 
 const firstname = "Nwabisa"
 const surname = "Gabe"
-const role = "CEO"
+export const roleC = "CEO"
 
-display = firstname + " " + role
+const display= firstname + roleC
 document.querySelector('#Nwabisa').innerText = display
+
+
