@@ -8,29 +8,22 @@ const minuteOfDay = 00;
 
 // Only change below this line
 
-const balance = [
-         rent ,          400,
-         tax ,         '12%',
-         food ,      51.7501,
-         salary ,        800,
-         transport,     10.2,
-         hourOfDay ,      00, 
-         minuteOfDay ,    00
-
-]
+const expenses = transport + food + rent
+const startingAfterTax = salary *(1 - parseInt(tax) / 100 )
 
 
 if (hourOfDay !==null && minuteOfDay !== null) {
 console.log("⚠️Error")}
 
-else {
-    (hourOfDay == 00 && minuteOfDay == 00) 
+else (hourOfDay === 00 && minuteOfDay === 00) 
 
-	const taxAsDecimal = parseInt(tax) / 100
-    const startingAfterTax = salary * 1 - taxAsDecimal
-	const balance = starting - transport - food - rent
-}
-    console.log("R"+balance)
+{   
+    const balance = startingAfterTax - expenses
+
+   }
+   
+   console.log(`R ${balance.toFixed(2)}`)// my salary is 4000
 
 
 
+  
