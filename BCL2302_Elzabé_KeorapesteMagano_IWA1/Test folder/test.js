@@ -1,2 +1,14 @@
+//LET 
+let x = 1;
 
-document.getElementById("p1").innerHTML = "New text!";
+if (x === 1) {
+  let x = 2;
+
+  console.log(x);
+  // Expected output: 2
+}
+
+console.log(x);
+// Expected output: 1
+
+//Const 

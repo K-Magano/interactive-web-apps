@@ -55,6 +55,12 @@ const futureId = 9
 if (futureId) {
 console.log(`ID {futureId} not created yet`) //Done!
 }
+
+/* * const first = {name: "keo"}
+console.log(first.name)
+first.name = "kev"
+console.log(first)
+ */
 holidays.name = 'X-mas Day'// changing name without deleting it
 //holidays['X-mas'] = holidays['Christmas Day']; // change 'Christmas Day' to 'X-mas'
 //delete holidays['Christmas Day'];

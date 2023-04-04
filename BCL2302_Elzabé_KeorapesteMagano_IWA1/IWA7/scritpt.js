@@ -14,7 +14,7 @@ const owed = parseInt(leoBalance*-1 + sarahBalance*-1)
 const leo = (`${leoName} ${leoSurname} (Owed R:${leoBalance*-1})`)
 const sarah = (`${sarahName} (Owed R: ${sarahBalance*-1})`)
 const total = (`Total amount owed `)
-const result = (`${leo}\n${sarah}\n${divider}\n   ${total} R:${owed} \n${divider}`)
+const result = (`${leo}\n${sarah}\n${divider}\n   ${total} R:${owed.toFixed(2)} \n${divider}`)
 console.log(result)
 
 //!!what I am getting
@@ -22,7 +22,7 @@ console.log(result)
 Leo Musvaire (Owed R:9394)
 Sarah (Owed R: 4582.21000111)
 ----------------------------------
-   Total amount owed  R:13976 
+   Total amount owed  R:13976.00
 ----------------------------------*/
 
 //!Expected OutCome
