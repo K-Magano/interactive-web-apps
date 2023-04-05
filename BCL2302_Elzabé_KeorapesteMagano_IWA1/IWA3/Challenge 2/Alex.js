@@ -1,4 +1,5 @@
-// Alex.js
+// Alex.js created a js for Alex
+
  const firstname = 'Alex';
  const Surname = 'Gannie'
 export const roleM = "Marketing Manager"
