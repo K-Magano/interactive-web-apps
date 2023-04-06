@@ -25,6 +25,8 @@ const leo = {
 		leoStreet,
 		leoPostal
 	},
+
+
 	
 }
 let currency = "R"
@@ -41,5 +43,7 @@ const sarah = {
 		sarahPostal
 	},
  }
-console.log(leo) //address is on one line 
-console.log(sarah)//address looks like address if i sarah.address it shows two address
+console.log(`Name: ${leo.Name}\nBalance: ${leo.Balance}\nAge:${leo.Age}\nAccessId: '${leo.AccessId}' \n\nAddress:  {\n  Number: ${leo.Address.leoNumber}\n  Street: ${leo.Address.leoStreet}\n  Postal:${leo.Address.leoPostal} }` ) 
+
+
+console.log(sarah)

@@ -1,7 +1,7 @@
-const 1 = [root.document(order1)],
-const 1-biscuits.document(biscuits),
-const 1-donuts.document(donuts),
-const 1-pancakes.document(pancakes),
+const 1 = root: document(order1)],
+const 1-biscuits document(biscuits),
+const 1-donuts document(donuts),
+const 1-pancakes document(pancakes),
 const 1-status.document(status)
 
 const 2-root = document(order2),
