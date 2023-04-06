@@ -31,13 +31,14 @@ const rent = {
    }
 
 // You can change below however you want
-const taxAsDecimal = 480 //parseInt(tax[913]) / 100 //tax is 12%
-const startingAfterTax = salary  - taxAsDecimal
+
+const taxAsDecimal = parseInt(tax[913]) / 100 //tax is 12%
+const startingAfterTax = salary *(1- taxAsDecimal)
 const type = lodging + size
-let rooms = rent[`large-apartment`] //so i can get a number
-const balance = (startingAfterTax - rooms - expenses.food - expenses.transport)
-//const balance = (`${rent} ${type} ${expenses.food + expenses.transport}`) = [object Object] apartment  large 61.950100000000006
+const balance = (startingAfterTax - rent["large-apartment"] - expenses.food - expenses.transport)
 console.log(`R ${balance.toFixed(2)}`)
 
 
- //!2685.25
+ //!Expected 2685.25
+
+ //* What I get R 2658.05
