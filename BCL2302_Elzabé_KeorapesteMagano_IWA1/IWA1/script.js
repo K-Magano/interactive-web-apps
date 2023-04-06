@@ -2,9 +2,9 @@
 // const MIN_NUMBER = -5 
 // const STEP_AMOUNT = 5
 
-// const number = document.querySelector('[data-key="number"]')
-// const add = document.querySelector('[data-key="add"]')
-// const subtract = document.querySelector('[data-key="subtract"]')
+const number = document.querySelector('[data-key="number"]')
+const add = document.querySelector('[data-key="add"]')
+const subtract = document.querySelector('[data-key="subtract"]')
 
 // const addHandler = () => {
 //      const newValue = parseInt(number.value) + STEP_AMOUNT
