@@ -15,7 +15,7 @@ if (year = 2050)
 	console.log(date, 'Freedom Day')
 	 count += 4 // (+=) is the same as count = +4
               
-	if (status === "student") { // (===)  compares the values as well as the data types of the operands.
+	if (status === "student") { // *The (===) operator will not do the conversion,  so if two values are not the same type === will simply return false . */
 	  console.log('June', 'Youth Day')
 		 count = count + 1
   }
@@ -24,7 +24,7 @@ if (year = 2050)
 
 	console.log('August', 'Women’s Day')
 	console.log('September', 'Heritage Day')
-	date = 'December'
+	date = 'December'//date
 	console.log(date, 'Day of Reconciliation')
 	 count = count + 3
                       
@@ -38,5 +38,5 @@ if (year = 2050)
 }
 
 console.log('Your status is:', status)
-console.log('The year is:', year)
+console.log('The year is:', year) //changed date to year so I can get this outcome
 console.log('The total holidays is:', count)
