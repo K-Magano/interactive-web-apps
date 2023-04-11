@@ -2,6 +2,7 @@
 // any variables declared cannot start with a number 
 //grouped all the things that look the same
 
+//Replace ''Loading...' Wwith the js values 
 const order1 = document.querySelector('[data-key="order1"]')
 const order2 = document.querySelector('[data-key="order2"]')
 const order3 = document.querySelector('[data-key="order3"]')
@@ -36,7 +37,7 @@ donuts3 = order1.dataset.donuts;
 pancakes3 = order1.dataset.pancakes;
 status3 = order1.dataset.delivered === "true" ? "Delivered" : "Pending";
 
-
+document.getElementsByClassName("biscuits.p-count").textContent = status ? "3":"0"
 document(biscuits.p-count).pending = 3-status ? 1-biscuits + 2-biscuits + 3-biscuits: 0
 document(biscuits.p-count).delivered 3-status ? 0 : 1-biscuits + 2-biscuits + 3-biscuits
 
@@ -159,80 +160,3 @@ document(pancakes.p-count).delivered 3-status ? 0 : 1-pancakes+ 2-pancakes + 3-p
 
 
 
-
-
-// const root1 = document.querySelector('[data-key="order1"]');
-
-
-//       biscuits = document.querySelector('[data-biscuits="10"]')
-//       donuts =  document.querySelector('[data-donuts="13"]')
-//       pancakes = document.querySelector('[data-pancakes="0"]')
-//       status = document.querySelector('[data-delivered="false"]')//delivered: pending
-
-//         console.log(root1)
-
-//        const Total = document.getElementByClassName("count"); {
-//         parseInt(["order1"]) + parseInt(["order2"])
-//        } 
-
-        
-//         //Pending 
-//      parseInt(["order3"])
-
-//      const root2 = document.querySelector('[data-key="order2"]') 
-    
-//       biscuits = document.getElementById('[data-biscuits="5"]')
-//       donuts =  document.querySelector('[data-donuts="0"]')
-//       pancakes = document.querySelector('[data-pancakes="2"]')
-//       status = document.querySelector('[data-delivered="false"]')//delivered: pending
-
-       
-//     console.log(root2)
-
-    
-// const root = document.querySelector('[data-key="order3"]') 
-    
-//     const biscuits = document.getElementById('[data-biscuits="12"]')
-//     const donuts =  document.querySelector('[data-donuts="11"]')
-//     const pancakes = document.querySelector('[data-pancakes="15"]')
-//     const status = document.querySelector('[data-delivered="true"]')//delivered: pending
-
-     
-//   console.log(root3)
-
-// //if statement for 
-
-// if (3-status === 0){
-//     1-biscuits + 2-biscuits + 3-biscuits
-//     console.log(pending)
-// }
-// if (3-status === 0){
-//     1-biscuits + 2-biscuits + 3-biscuits
-//     console.log(delivered)
-// } if (status === 0) {
-
-// }
-
-
-// //First Two
-// document(biscuits.p-count).pending = 3-status ? 1-biscuits + 2-biscuits + 3-biscuits: 0
-// document(biscuits.p-count).delivered 3-status ? 0 : 1-biscuits + 2-biscuits + 3-biscuits
-
-
-// if (3-status === 0){
-//     1-biscuits + 2-biscuits + 3-biscuits
-//     console.log(pending)
-// }
-// if (3-status === 0){
-//     1-biscuits + 2-biscuits + 3-biscuits
-//     console.log(delivered)
-// } if (status === 0) {
-
-// }
-
-
-// document(donuts.p-count).pending = 3-status ? 1-donuts + 2-donuts + 3-donuts: 0
-// document(donuts.p-count).delivered 3-status ? 0 : 1-donuts + 2-donuts + 3-donuts
-
-// document(pancakes.p-count).pending = 3-status ? 1-pancakes+ 2-pancakes+ 3-pancakes: 0
-// document(pancakes.p-count).delivered 3-status ? 0 : 1-pancakes+ 2-pancakes + 3-pancakes

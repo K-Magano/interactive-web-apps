@@ -16,7 +16,7 @@ const sarahPostal = '0310'
 const leo = {
 
 	Name: leoName,
-	Balance: parseInt(leoBalance*-1),//ParseInt to convert string to number *-1 to make the number a positive
+	Balance: `R ${parseInt(leoBalance*-1)}`,//ParseInt to convert string to number *-1 to make the number a positive
     Age: 24,
 	AccessId :  '47afb389-8014-4d0b-aff3-e40203d2107f',
  
@@ -29,11 +29,11 @@ const leo = {
 
 	
 }
-let currency = "R"
+
 const sarah = {
    
 	Name:` ${(sarahName).trim()} ${sarahSurname}`,
-	Balance:`${currency} ${parseInt(sarahBalance*-1)}`,
+	Balance:`R ${parseInt(sarahBalance*-1)}`,
 	Age: 62,
 	AccessId: '6b279ae5-5657-4240-80e9-23f6b635f7a8',
 
@@ -43,7 +43,8 @@ const sarah = {
 		sarahPostal
 	},
  }
-console.log(`Name: ${leo.Name}\nBalance: ${leo.Balance}\nAge:${leo.Age}\nAccessId: '${leo.AccessId}' \n\nAddress:  {\n  Number: ${leo.Address.leoNumber}\n  Street: ${leo.Address.leoStreet}\n  Postal:${leo.Address.leoPostal} }` ) 
+//console.log(`Name: ${leo.Name}\nBalance: ${leo.Balance}\nAge:${leo.Age}\nAccessId: '${leo.AccessId}' \n\nAddress:  
+           // {\n  Number: ${leo.Address.leoNumber}\n  Street: ${leo.Address.leoStreet}\n  Postal:${leo.Address.leoPostal} }` ) 
 
-
+console.log(leo, leo.address.Postal)
 console.log(sarah)

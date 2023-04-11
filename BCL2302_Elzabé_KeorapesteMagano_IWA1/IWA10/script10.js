@@ -53,8 +53,8 @@ const futureId = 9
 
 // Do not change code above this comment
 
-if (futureId) {
-//console.log(`ID {futureId} not created yet`) 
+if (9) {
+console.log(`ID {futureId} not created yet`) 
 
 }
 //Changing christmas to X-mas: 
@@ -66,7 +66,7 @@ holidays[6].date = new Date(`25 December ${currentYear}` )
 //checking if new date is earlier than current date
 const isEarlier =  new Date(`25 December ${currentYear} 13:25`)
 const  correctDate = new Date (`25 December ${currentYear}` )
-//console.log(`New date is earlier: ${isEarlier > correctDate}`)
+console.log(`New date is earlier: ${isEarlier > correctDate}`)
 
 //Setting date
 let copied = holidays[6].name
