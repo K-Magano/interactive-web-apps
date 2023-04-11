@@ -55,7 +55,11 @@ const futureId = 9
 
 /*if (9) {
 console.log(`ID {futureId} not created yet`) 
-}*/
+}
+
+if (holidays =>8) {
+    console.log([]) 
+    } else if(9){console.log(`ID {futureId} not created yet`)}
 //Changing christmas to X-mas: 
 holidays[6].name = "X-mas"
 
@@ -80,21 +84,15 @@ if (isEarlier) copied = correctDate
 console.log('ID change:', holidays[christmas].id == copied.id )//|| copied.id)
 console.log('Name change:', holidays[christmas].name )//== copied.name || copied.name)
 
-console.log(`Date change: ${(new Date(`25 December ${currentYear}`).toLocaleDateString('en-NZ'))}`);
+console.log(`Date change: ${(new Date(`25 December ${currentYear}`).toLocaleDateString('en-NZ'))}`);*/
 
 
+let stringdate =  `16 December ${currentYear}`
+let numberDate = new Date(stringdate + "Z")
+holidays[0].date = new Date(`stringdate "Z" ${currentYear}`)
 
-
-   
-
-
-//! Convert dates to numbers and in milliseconds  to use max and min math method 
-
-
-//!! NEW BOCK OF CODE 
-//let date =  `16 December ${currentYear}`
 const firstHolidayTimestamp = Math.min(
-    //holidays[0].Date.parse(date).getTime,
+    holidays[0].date.getTime,
     holidays[1].date.getTime,
     holidays[2].date.getTime,
     holidays[3].date.getTime,
@@ -117,25 +115,41 @@ const lastHolidayTimestamp = Math.max(
     holidays[7].date.getTime,
     holidays[8].date.getTime,
 )
-//! convert dates into required formates
+
+
+
 const firstDay = firstHolidayTimestamp
 const firstMonth = firstHolidayTimestamp.getMonth
 const lastDay = lastHolidayTimestamp.getDate
 const lastMonth = lastHolidayTimestamp.getMonth
 
+/*function getRandomDate() {
+    const firstDay = Date.now();
+    const randomHoliday = Math.floor(Math.random() * firstDay);
+    return new Date(timestamp);
+}
+
+function getRandomDate(firstDay, lastDay) {
+    const minValue = firstDay.getTime();
+    const maxValue = lastDay.getTime();
+    const randomHoliday = Math.floor(Math.random() * (maxValue - minValue + 1) + minValue);
+    return new Date(timestamp);
+}
+
+console.log(getRandomDate(new Date(), new Date()));*/
+
+
 console.log(`${firstDay}/${firstMonth}/${currentYear}`)
 console.log(`${lastDay}/${lastMonth}/${currentYear}`)
 
-const randomHoliday = holidays[Math.random]
+//const randomHoliday = holidays[Math.random]
 console.log(randomHoliday.date)
 
-//!Outcome
-/*
-ID change: false
-Name change: X-mas
-Date change: 25/12/2023*/
 
 
+
+
+console.log(getRandomDate());
 //!Outcome
 /*
 ID change: false
