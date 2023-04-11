@@ -2,7 +2,7 @@
 // any variables declared cannot start with a number 
 //grouped all the things that look the same
 
-//Replace ''Loading...' Wwith the js values 
+//Replace ''Loading...' With the js values 
 const order1 = document.querySelector('[data-key="order1"]')
 const order2 = document.querySelector('[data-key="order2"]')
 const order3 = document.querySelector('[data-key="order3"]')
@@ -38,6 +38,8 @@ pancakes3 = order1.dataset.pancakes;
 status3 = order1.dataset.delivered === "true" ? "Delivered" : "Pending";
 
 document.getElementsByClassName("biscuits.p-count").textContent = status ? "3":"0"
+
+
 document(biscuits.p-count).pending = 3-status ? 1-biscuits + 2-biscuits + 3-biscuits: 0
 document(biscuits.p-count).delivered 3-status ? 0 : 1-biscuits + 2-biscuits + 3-biscuits
 

@@ -53,10 +53,9 @@ const futureId = 9
 
 // Do not change code above this comment
 
-if (9) {
+/*if (9) {
 console.log(`ID {futureId} not created yet`) 
-
-}
+}*/
 //Changing christmas to X-mas: 
 holidays[6].name = "X-mas"
 
@@ -66,21 +65,26 @@ holidays[6].date = new Date(`25 December ${currentYear}` )
 //checking if new date is earlier than current date
 const isEarlier =  new Date(`25 December ${currentYear} 13:25`)
 const  correctDate = new Date (`25 December ${currentYear}` )
-console.log(`New date is earlier: ${isEarlier > correctDate}`)
+//console.log(`New date is earlier: ${isEarlier > correctDate}`)
 
 //Setting date
 let copied = holidays[6].name
-copied = { name: 'X-mas Day' }
-correctDate = copied.date
+copied == { name: 'X-mas Day' }
+correctDate == copied.date
 var hours = minutes*60
 var minutes = 1000*60
 
-
+// gives you your current X-Mas date
 
 if (isEarlier) copied = correctDate
-console.log('ID change:', holidays[christmas].id != copied.id || copied.id)
-console.log('Name change:', holidays[christmas].name == copied.name || copied.name)
-console.log('Date change:', holidays[christmas].date.toDateString({day: 25, month: 12, year: 2023}))
+console.log('ID change:', holidays[christmas].id == copied.id )//|| copied.id)
+console.log('Name change:', holidays[christmas].name )//== copied.name || copied.name)
+
+console.log(`Date change: ${(new Date(`25 December ${currentYear}`).toLocaleDateString('en-NZ'))}`);
+
+
+
+
    
 
 
