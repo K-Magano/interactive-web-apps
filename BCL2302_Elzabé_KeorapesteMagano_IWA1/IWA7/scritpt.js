@@ -9,8 +9,18 @@ const sarahBalance = '-4582.21000111'
 const divider = '----------------------------------'
 
 // Only change below this line
+/**
+ * Used parseFloat so i get get a decimal number
+ * *-1 to the nameBalance to get a positive number 
+ * .toFixed(2) for two Decimal places 
+ * Removed the 'R'
+ * Used interpolation for Leo, Sarah , total owed and results.
+ * \n for new lines
+ */
+let owed = parseFloat(leoBalance*-1 +  sarahBalance*-1)
 
-const owed = parseFloat(leoBalance*-1 +  sarahBalance*-1)
+owed = parseFloat(leoBalance)*-1 +  parseFloat(sarahBalance)*-1
+
 const leo = (`${leoName} ${(leoSurname).trim()} (Owed: R ${(leoBalance*-1).toFixed(2)})`)
 const sarah = (`${(sarahName).trim()} ${sarahSurname}(Owed: R ${(sarahBalance*-1).toFixed(2)})`) //wanted to add .toFixed
 const total = (`Total amount owed: `)
@@ -26,12 +36,6 @@ Sarah Kleinhans(Owed: R 4582.21)
 ----------------------------------
    Total amount owed:  R 13976.21  //!How do i get the space in a number
 ----------------------------------
-//!!what I am getting
-/* With parseInt the number was whole and did not add the decimals 
-----------------------------------
-   Total amount owed:  R13976.00 
-----------------------------------
-*/
 
 //!Expected OutCome
 

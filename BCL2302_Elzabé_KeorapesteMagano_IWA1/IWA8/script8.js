@@ -13,10 +13,18 @@ const sarahPostal = '0310'
 //const sarahBalance = '-5' Two sarah Balances
 
 // Only change below this line
-const leo = {
 
+    /** 
+	 * ParseInt to convert string to number *-1 to make the number a positive
+	 *Deleted leo Surname
+	** Removed number, street and postal-code
+	 *  number = leoNumber
+		street = leoStreet
+		postal-code = leoPostal
+	 * */ 
+	const leo = {
 	Name: leoName,
-	Balance: `R ${parseInt(leoBalance*-1)}`,//ParseInt to convert string to number *-1 to make the number a positive
+	Balance: `R ${parseInt(leoBalance*-1)}`,
     Age: 24,
 	AccessId :  '47afb389-8014-4d0b-aff3-e40203d2107f',
  
@@ -29,7 +37,10 @@ const leo = {
 
 	
 }
-
+/**
+ * .trim() to remove the spaces  
+ * parseInt to convert number to string
+ */
 const sarah = {
    
 	Name:` ${(sarahName).trim()} ${sarahSurname}`,
@@ -43,8 +54,12 @@ const sarah = {
 		sarahPostal
 	},
  }
-//console.log(`Name: ${leo.Name}\nBalance: ${leo.Balance}\nAge:${leo.Age}\nAccessId: '${leo.AccessId}' \n\nAddress:  
-           // {\n  Number: ${leo.Address.leoNumber}\n  Street: ${leo.Address.leoStreet}\n  Postal:${leo.Address.leoPostal} }` ) 
 
-console.log(leo, leo.address.Postal)
+ /**
+  * console.log(`Name: ${leo.Name}\nBalance: ${leo.Balance}\nAge:${leo.Age}\nAccessId: '${leo.AccessId}' \n\nAddress:  
+           {\n  Number: ${leo.Address.leoNumber}\n  Street: ${leo.Address.leoStreet}\n  Postal:${leo.Address.leoPostal} }` )
+		   for layout purposes  
+  */ 
+
+console.log(leo, leo.address)
 console.log(sarah)

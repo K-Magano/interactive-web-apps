@@ -53,13 +53,14 @@ const futureId = 9
 
 // Do not change code above this comment
 
-/*if (9) {
+if (9) {
 console.log(`ID {futureId} not created yet`) 
 }
 
-if (holidays =>8) {
+/*if (holidays =<8) {
     console.log([]) 
-    } else if(9){console.log(`ID {futureId} not created yet`)}
+    } else if(9){console.log(`ID {futureId} not created yet`)}*/
+
 //Changing christmas to X-mas: 
 holidays[6].name = "X-mas"
 
@@ -75,8 +76,8 @@ const  correctDate = new Date (`25 December ${currentYear}` )
 let copied = holidays[6].name
 copied == { name: 'X-mas Day' }
 correctDate == copied.date
-var hours = minutes*60
-var minutes = 1000*60
+let hours = minutes*60
+let minutes = 1000*60
 
 // gives you your current X-Mas date
 
@@ -84,25 +85,26 @@ if (isEarlier) copied = correctDate
 console.log('ID change:', holidays[christmas].id == copied.id )//|| copied.id)
 console.log('Name change:', holidays[christmas].name )//== copied.name || copied.name)
 
-console.log(`Date change: ${(new Date(`25 December ${currentYear}`).toLocaleDateString('en-NZ'))}`);*/
+console.log(`Date change: ${(new Date(`25 December ${currentYear}`).toLocaleDateString('en-NZ'))}`);
 
-
+//Converting [0] into a date from a string
 let stringdate =  `16 December ${currentYear}`
 let numberDate = new Date(stringdate + "Z")
 holidays[0].date = new Date(`stringdate "Z" ${currentYear}`)
 
+console.log(holidays[0])
 const firstHolidayTimestamp = Math.min(
-    holidays[0].date.getTime,
-    holidays[1].date.getTime,
-    holidays[2].date.getTime,
-    holidays[3].date.getTime,
-    holidays[4].date.getTime,
-    holidays[5].date.getTime,
-    holidays[6].date.getTime,
-    holidays[7].date.getTime,
-    holidays[8].date.getTime,
+    holidays[0].date.getTime(),
+    holidays[1].date.getTime(),
+    holidays[2].date.getTime(),
+    holidays[3].date.getTime(),
+    holidays[4].date.getTime(),
+    holidays[5].date.getTime(),
+    holidays[6].date.getTime(),
+    holidays[7].date.getTime(),
+    holidays[8].date.getTime(),
 )
-//console.log(holidays[0])
+
 
 const lastHolidayTimestamp = Math.max(
     holidays[0].date.getTime,//This is a string
@@ -118,17 +120,12 @@ const lastHolidayTimestamp = Math.max(
 
 
 
-const firstDay = firstHolidayTimestamp
-const firstMonth = firstHolidayTimestamp.getMonth
-const lastDay = lastHolidayTimestamp.getDate
-const lastMonth = lastHolidayTimestamp.getMonth
+const firstDay = firstHolidayTimestamp.getDate()
+const firstMonth = firstHolidayTimestamp.getMonth()
+const lastDay = lastHolidayTimestamp.getDate()
+const lastMonth = lastHolidayTimestamp.getMonth()
 
-/*function getRandomDate() {
-    const firstDay = Date.now();
-    const randomHoliday = Math.floor(Math.random() * firstDay);
-    return new Date(timestamp);
-}
-
+/*
 function getRandomDate(firstDay, lastDay) {
     const minValue = firstDay.getTime();
     const maxValue = lastDay.getTime();
@@ -142,12 +139,8 @@ console.log(getRandomDate(new Date(), new Date()));*/
 console.log(`${firstDay}/${firstMonth}/${currentYear}`)
 console.log(`${lastDay}/${lastMonth}/${currentYear}`)
 
-//const randomHoliday = holidays[Math.random]
+const randomHoliday = holidays[Math.random]
 console.log(randomHoliday.date)
-
-
-
-
 
 console.log(getRandomDate());
 //!Outcome

@@ -34,10 +34,14 @@ const rent = {
 
 const taxAsDecimal = parseInt(tax[913]) / 100 //tax is 12%
 const startingAfterTax = salary *(1- taxAsDecimal)
-const type = `${lodging}  ${size}`
-const balance = (startingAfterTax - rent["large-apartment"] - expenses.food - expenses.transport)
+const type = `${size}-${lodging}`// used interpolation 
+const balance = (startingAfterTax - rent[type] - expenses.food - expenses.transport)
 console.log(`R ${balance.toFixed(2)}`)
 
+/**
+ * The taxable amount should be subtracted from the salary before expenses are calculated
+   The total should be the result of the after-tax amount with all expenses subtracted
+ */
 
  //!Expected 2685.25
 
