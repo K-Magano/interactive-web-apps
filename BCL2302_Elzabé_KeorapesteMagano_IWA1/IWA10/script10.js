@@ -93,32 +93,34 @@ let numberDate = new Date(stringdate + "Z")
 holidays[0].date = new Date(`stringdate "Z" ${currentYear}`)
 
 console.log(holidays[0])
-const firstHolidayTimestamp = Math.min(
-    holidays[0].date.getTime(),
-    holidays[1].date.getTime(),
-    holidays[2].date.getTime(),
-    holidays[3].date.getTime(),
-    holidays[4].date.getTime(),
-    holidays[5].date.getTime(),
-    holidays[6].date.getTime(),
-    holidays[7].date.getTime(),
-    holidays[8].date.getTime(),
+const firstHolidayTimestamp = Math.min(//outcomes in milliseconds
+    numberDate,
+    holidays[1].date,
+    holidays[2].date,
+    holidays[3].date,
+    holidays[4].date,
+    holidays[5].date,
+    holidays[6].date,
+    holidays[7].date,
+    holidays[8].date,
 )
 
+let milliTime = new Date(firstHolidayTimestamp)
+console.log(`First Holiday:${milliTime.toLocaleDateString("en-ZA")}`)
 
 const lastHolidayTimestamp = Math.max(
-    holidays[0].date.getTime,//This is a string
-    holidays[1].date.getTime,
-    holidays[2].date.getTime,
-    holidays[3].date.getTime,
-    holidays[4].date.getTime,
-    holidays[5].date.getTime,
-    holidays[6].date.getTime,
-    holidays[7].date.getTime,
-    holidays[8].date.getTime,
+    numberDate,
+    holidays[1].date,
+    holidays[2].date,
+    holidays[3].date,
+    holidays[4].date,
+    holidays[5].date,
+    holidays[6].date,
+    holidays[7].date,
+    holidays[8].date,
 )
-
-
+let milliMaxTime = new Date(lastHolidayTimestamp)
+console.log(`Last Holiday:${milliMaxTime.toLocaleDateString("en-ZA")}`)
 
 const firstDay = firstHolidayTimestamp.getDate()
 const firstMonth = firstHolidayTimestamp.getMonth()
@@ -132,9 +134,16 @@ function getRandomDate(firstDay, lastDay) {
     const randomHoliday = Math.floor(Math.random() * (maxValue - minValue + 1) + minValue);
     return new Date(timestamp);
 }
-
 console.log(getRandomDate(new Date(), new Date()));*/
 
+const randomHolidayIndex = Math.floor(Math.random() * 9)
+const randomHoliday = holidays[randomHolidayIndex]
+const randomHolidayDate = randomHoliday.date instanceof Date ?
+  `${randomHoliday.date.getDate().toString().padStart(2, '0')}/` +
+  `${(randomHoliday.date.getMonth() + 1).toString().padStart(2, '0')}/` +
+  `${randomHoliday.date.getFullYear()}` :
+  randomHoliday.date
+console.log (randomHolidayDate)
 
 console.log(`${firstDay}/${firstMonth}/${currentYear}`)
 console.log(`${lastDay}/${lastMonth}/${currentYear}`)

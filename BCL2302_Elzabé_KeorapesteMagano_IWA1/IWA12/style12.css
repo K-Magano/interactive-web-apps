@@ -1,0 +1,47 @@
+:root{
+    --color-peach: #F8B195;
+    --color-dark-pink: #C06C84;
+    --color-dark-purple: #6c5b7b;
+    --color-grayscale: #d2d6dc;
+    --color-dark-green: #023020
+}
+
+*{
+    box-sizing: border-box;
+}
+
+
+body{ 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 50%;
+    background: var(--color-dark-green);
+    font-size: larger;
+ 
+}
+
+.checkin, .checkout, .reserve{
+    padding: 2%;
+    justify-content: space-between;
+    background-color: var(--color-grayscale);
+    border-radius: 10%;
+    border-color: none;
+}
+
+h3{
+
+    color: whitesmoke
+}
+
+p{
+    color: whitesmoke
+}
+
+span{
+   
+    font-size: larger;
+    text-decoration: underline;
+}
+
+
