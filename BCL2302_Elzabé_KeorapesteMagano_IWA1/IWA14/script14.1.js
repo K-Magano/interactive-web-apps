@@ -1,21 +1,23 @@
-firstName = 'John';
-age = 35;
-hobby = 'Coding';
+const firstName = 'John';
+const age = 35;
+const hobby = 'Coding';
 
 
 //Arrow Function Expression
-const logTwice = (parameter) => { //guess work, saw it in the lecture video
+
+const logTwice = (parameter/*argument*/) => { 
   console.log(parameter)//added .log
   console.log(parameter)
 }
 
 // Function Declaration
-function newHobby () {//is this not re-declaring?
+//redefined hobby to prevent re-declaration 
+function newHobby () {//is this not re-declaring Hobby ?
   logTwice(`Hello, ${firstName} (${age}). I love ${hobby}!`)//not name but firstName
   return logTwice
 }
 
-newHobby()// redefined hobby to prevent re-declaration 
+newHobby()
 
 
-//!OutComes : Hello, John (35). I love coding!
+//!OutComes : Hello, John (35). I love coding! x2

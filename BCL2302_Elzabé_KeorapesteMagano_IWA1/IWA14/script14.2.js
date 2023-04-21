@@ -1,54 +1,60 @@
-// script.js
-//made the Functions Arrow Function Expression
-
-
-//Defining the multiply function
-const add = (a, b ) => { a + b 
-	console.log( a + b)
+// Function Declaration
+function add(a, b) {
+	return a + b;
 	
-}
-// Defining the multiply function
-const multiply = (a, b) => { a * b 
-	console.log( a * b) 
-}
+  }
+  
+   
+  function multiply(add, b) {
+	return add * b;
+  }
+  
+ /* It is a function named "internal" that performs some mathematical operations on the properties "a" and "b" of an object called "internal". 
+  The function calls two other functions, "add" and "multiply", to calculate the added and multiplied values of "a" and "b". 
+  Finally,  the function returns the result of multiplying the added and multiplied values.*/
+  
+  function internal() {//this acts like a for loop 
+	const added = this.add(this.internal.a, this.internal.b);
+	const multiplied = this.multiply(added, this.internal.c);
+	console.log(multiplied)
+  }
+  
 
-//Defining the internal function
-const internal = () => {
-	const added = this.added(this.a, this.b)
-	const multiply = this.multiplied(this.a, this.b)
-	return this
-}
-
-/*function internal(obj) {
-	const added = add(obj.a, obj.b);
-	const multiplied = multiply(obj.a, obj.b);
-	return obj;
-}*/
-
-
-// Not allowed to change below this
-
-const example1 = {
-	/*object*/internal: { //internal: { a: 2, b: 4, c: 8 },
-			  a: 2,
-			  b: 4,
-			  c: 8,
+  const example1 = {
+	internal: { 
+	  a: 2, 
+	  b: 4,
+	  c: 8,
 	},
-	add, //2+4 +
-	multiply,//4*2 = 
-  calculate: internal 
-}
-
-const example2 = {
-	internal: { //internal: { a: 2, b: 2, c: 3 },
-		a: 2,
-		b: 2,
-		c: 3,
+   add,
+   multiply,
+   calculate: internal 
+   }
+  
+  const example2 = {
+	internal: {
+	  a: 2,
+	  b: 2,
+	  c: 3,
 	},
-	add,//(2+2) +
-	multiply,//2*2 = 12
-  calculate: internal
-}
+	add,
+	multiply,
+	calculate: internal } 
+	
+	const example3 = {
+	internal: {
+	  a: 10,
+	  b: 10,
+	  c: 10, 
+	},
+	add,
+	multiply,
+	calculate: internal}
+  
+  example1.calculate(); // should log 48
+  example2.calculate(); // should log 12
+  example3.calculate();// should log 200
+  (this)
+ 
 
-example1.calculate() //calculate: [Function: internal]
-example2.calculate()
+ 

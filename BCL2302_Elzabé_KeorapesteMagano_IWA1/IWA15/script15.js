@@ -9,32 +9,54 @@ const data = {//!Name: Array literal uses [ **index**] not {}
 }
 
 // Only edit below
-//Deconstructing array  
-const { first = 1 } = data.first || {} //join arrays? using concat
-const { second = 1 } = data.second || {}
-const { third = 1 } = data.third || {}
 
-const result = []
-
-const extractBiggest = () => {
-	if (first[-1] > second[-1]) { //-1 looking for the last key in array
-		return first // try indexof() , find(), findLast(), findIndex/ findLastIndex
+//Deconstructing an array  
+const data = {
+	lists: [
+	  ['first', [15, 11, 13, 7, 5]],
+	  ['second', [2, 6, 8, 4, 14, 12, 10]],
+	  ['third', [9, 3, 1]],
+	],
+  };
+  
+  // Only edit below
+  
+  const [_, first] = data.lists.find(([key]) => key === 'first') || [, []];
+  const [__, second] = data.lists.find(([key]) => key === 'second') || [, []];
+  const [___, third] = data.lists.find(([key]) => key === 'third') || [, []];
+  
+  const result = [];
+  
+  const extractBiggest = () => {
+	const firstLast = first[first.length - 1];
+	const secondLast = second[second.length - 1];
+	const thirdLast = third[third.length - 1];
+  
+	if (firstLast >= secondLast && firstLast >= thirdLast) {
+	  return first.pop();
 	}
-
-	if (third[-1] < 1) { //try sort()
-		return second
+  
+	if (secondLast >= firstLast && secondLast >= thirdLast) {
+	  return second.pop();
 	}
-	
-	return third
-}
-
+  
+	return third.pop();
+  };
+  
+  // Only edit above
+  
+  for (let i = 0; i < 15; i++) {
+	result.push(extractBiggest());
+  }
+  
+  console.log(result);
 
 // Only edit above
 
 result.push(extractBiggest()) //.push adds a key to the end of the array
 result.push(extractBiggest()) //.pop remove last key from array
-result.push(extractBiggest()) //.shit like .pop but first 
-result.push(extractBiggest()) //.unshift like pish but for first
+result.push(extractBiggest()) //.shift like .pop but first 
+result.push(extractBiggest()) //.unshift like push but for first
 result.push(extractBiggest())
 
 result.push(extractBiggest())

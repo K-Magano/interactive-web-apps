@@ -50,21 +50,28 @@ const holidays = {
  const christmas = 6
  const futureId = 9
  // Do not change code above this comment
- if (9) {
- console.log(`ID {futureId} not created yet`) 
- }
- //Changing christmas to X-mas: 
- holidays[6].name = "X-mas"
 
-//Changing christmas time to midnight
+ /* Used an if statement to check if 9 has been assigned a holiday \*/
+if (holidays[futureId]) {
+  console.log(`The holiday assigned to ID ${futureId} is ${holidays[futureId].name}.`);
+} else {
+  console.log(`ID ${futureId} not created yet.`);
+}
+ //Changing christmas to X-mas: by re-declaring the key 
+ holidays[christmas].name = "X-mas"
+
+//Changing christmas time to midnight by removing the 13:25  time
 holidays[6].date = new Date(`25 December ${currentYear}` )
 
 //checking if new date is earlier than current date
 const isEarlier =  new Date(`25 December ${currentYear} 13:25`)
+/**
+ * correctDate is the changed date 
+ */
 const  correctDate = new Date (`25 December ${currentYear}` )
-//console.log(`New date is earlier: ${isEarlier > correctDate}`)
+console.log(`New date is earlier: ${isEarlier > correctDate}`)
 
-//Setting date
+//Setting thr correct date
 let copied = holidays[6].name
 copied == { name: 'X-mas Day' }
 correctDate == copied.date
@@ -74,18 +81,41 @@ correctDate == copied.date
 if (isEarlier) {copied = correctDate}
 console.log('ID change:', holidays[christmas].id === copied.id )
 console.log('Name change:', holidays[christmas].name == copied.name || holidays[christmas].name)
+/**
+ * changing the date format using ('en-NZ) to get dd/mm/yyyy)
+ *  toLocaleDateString() returns the date based on the current locale (language and region settings).
+ */
 console.log(`Date change: ${(new Date(`25 December ${currentYear}`).toLocaleDateString('en-NZ'))}`);
 
-//Converting [0] into a date from a string
+//
+/**
+ * Converting day of reconciliation to a date 
+ */
 let dayOfReconciliation =  holidays[0]
 dayOfReconciliation = new Date(`16 December ${currentYear}`)
 
 console.log(dayOfReconciliation.toLocaleDateString('en-NZ'))
 
-//!FAILED: Trying to understand the Random generator 
+/**
+ * !Math.min  return the smallest value e.g  Math.min(2, 5, 8)  = 2
+ * !Math.max: maximum  Math.max(2, 5, 8)  = 8.
+ * !new Date(): 
+ * creates a Date object, for a specific date and time, using year, month, day, hour, minute, second, and millisecond.
+ * !.getTime(): 
+ * This is a method on Date objects in JavaScript that returns the number of milliseconds
+ * !.padStart() and .padEnd(): 
+ *  add zeros at the or end of a string to ensure the take up a  certain length. .
+ */
 
-const firstHolidayDate = new Date(firstHolidayTimestamp).toLocaleDateString('en-ZA');
-const lastHolidayDate = new Date(lastHolidayTimestamp).toLocaleDateString('en-ZA');
+
+//!FAILED: Trying to understand the Random generator 
+let holidayDates = Object.values(holidays).map(h => h.date)
+let firstHolidayDates = new Date(Math.min(...holidayDates))
+let lastHolidayDates = new Date (Math.max(...holidayDates))
+
+console.log(holidays[0].date.toLocaleString('en-NZ'))
+console.log(holidays[8].date.toLocaleString('en-NZ'))
+
 
 console.log(`First Holiday: ${firstHolidayDate}`);
 console.log(`Last Holiday: ${lastHolidayDate}`);
@@ -95,6 +125,11 @@ function getRandomDate(min, max) {
 }
 
 console.log(`Random Holiday Date: ${randomHolidayDate}`);
+
+//log Math.random x (x)will return decimals.= then parseInt 
+  then check whole number 
+  use if statement 
+
 
 
 
