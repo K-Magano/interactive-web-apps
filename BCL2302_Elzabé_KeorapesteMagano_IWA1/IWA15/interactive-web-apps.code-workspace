@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "../.."
+		},
+		{
+			"path": "C:/Users/softwaredeveloper42/Downloads/IWA_18_4.zip.IWA_18_4"
+		}
+	],
+	"settings": {
+		"liveServer.settings.port": 5501,
+		"liveServer.settings.multiRootWorkspaceName": "IWA_18_4.zip.IWA_18_4"
+	}
+}
