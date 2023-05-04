@@ -14,21 +14,24 @@ const MONTHS = [
 ];
 const getDaysInMonth = (year, month) => new Date(year, month + 1, 0).getDate()
 // Only edit below
-
-//Note, for me to be able to fix this, I had to change most of the code if not all of it.
-const createData = () => { //added const to createData and assigned it to the following variables
+const createData = () => {
+     //added const to createData and assigned it to the following variables
+    
     // Bellow are the variables that were assigned by the createData constant
+    
     const current = new Date();
     const year = current.getFullYear();
     const month = current.getMonth();
     const daysInMonth = getDaysInMonth(year, month);
     const weeks = [];
     let week = [];
+    
     // Find the first day of the month
-    const firstDay = new Date(year, month, 1).getDay();
+         const firstDay = new Date(year, month, 1).getDay();
+     
     // Offset for starting week from Saturday
-    let offset = firstDay < 6 ? firstDay + 1 : 6;
-    for (let i = 0; i < offset; i++) {
+         let newDay = firstDay < 6 ? firstDay + 1 : 6;
+        for (let i = 0; i < newDay; i++) {
         week.push(null); // filled in empty cells for days before the first day of the month
     }
     for (let day = 1; day <= daysInMonth; day++) {
@@ -57,12 +60,16 @@ const createCell = (day, isToday) => {
     return cell;
 };
 const createHtml = () => {
+   
     const content = document.querySelector('[data-content]');
     const weeks = createData();
+
     for (let i = 0; i < weeks.length; i++) {
         const week = weeks[i];
         const row = document.createElement('tr');
+
         // Create and append the week number cell
+
         const weekNumber = document.createElement('td');
         weekNumber.classList.add('table__cell_week');
         weekNumber.innerText = `Week ${i + 1}`;

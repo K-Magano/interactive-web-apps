@@ -85,7 +85,7 @@ const year = date.getFullYear();
   const[first, second, third, fourth] = latestRace.time;
   const totalTime = (first + second + third + fourth).toString();
 
-  const hours =Math.floor (totalTime / 60).toString();
+  const hours = Math.floor (totalTime / 60).toString();
   const minutes = totalTime.split('T');
   const Time = `${hours}:${minutes}`;
 // Create an HTML element to represent the athlete
