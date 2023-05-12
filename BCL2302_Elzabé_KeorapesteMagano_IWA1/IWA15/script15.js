@@ -1,6 +1,6 @@
 // scripts.js
 
-const data = {//!Name: Array literal uses [ **index**] not {}
+const data = {
 	lists: [
 		['first', [15, 11, 13, 7, 5]],
 		['second', [2, 6, 8, 4, 14, 12, 10]],
@@ -11,15 +11,6 @@ const data = {//!Name: Array literal uses [ **index**] not {}
 // Only edit below
 
 //Deconstructing an array  
-const data = {
-	lists: [
-	  ['first', [15, 11, 13, 7, 5]],
-	  ['second', [2, 6, 8, 4, 14, 12, 10]],
-	  ['third', [9, 3, 1]],
-	],
-  };
-  
-  // Only edit below
   
   const [_, first] = data.lists.find(([key]) => key === 'first') || [, []];
   const [__, second] = data.lists.find(([key]) => key === 'second') || [, []];
@@ -49,8 +40,9 @@ const data = {
 	result.push(extractBiggest());
   }
   
-  console.log(result);
-
+  console.log(...result);
+//!expected outcome [10, 12, 14, 5, 7, 13, 11, 15, 4, 8, 6, 2, 1, 3, 9]
+//!I get [10 12 14 5 7 13 11 15 1 3 9]
 // Only edit above
 
 result.push(extractBiggest()) //.push adds a key to the end of the array

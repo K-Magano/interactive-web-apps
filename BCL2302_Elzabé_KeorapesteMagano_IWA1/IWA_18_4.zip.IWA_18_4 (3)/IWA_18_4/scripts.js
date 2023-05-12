@@ -1,3 +1,6 @@
+import {createOrderHtml, html, updateDraggingHtml, moveToColumn, } from  './view.js'
+import { createOrderData, updateDragging, state} from './data.js'
+//const updateOrder = document.querySelector('button[form="edit-form"]').addEventListener('click', UpdateOrderButton)
 /**
  * A handler that fires when a user drags over any element inside a column. In
  * order to determine which column the user is dragging over the entire event
@@ -7,13 +10,13 @@
  * active dragging column is set in the `state` object in "data.js" and the HTML
  * is updated to reflect the new column.
  *
- * @param {Event} event 
+ * @param {Event} event
  */
+// item is being dragged over a drop area and checks each element for data-area and updates the state of application
 const handleDragOver = (event) => {
     event.preventDefault();
     const path = event.path || event.composedPath()
     let column = null
-
     for (const element of path) {
         const { area } = element.dataset
         if (area) {
@@ -21,39 +24,197 @@ const handleDragOver = (event) => {
             break;
         }
     }
-
     if (!column) return
     updateDragging({ over: column })
     updateDraggingHtml({ over: column })
 }
 
 
+// actions for when button is clicked
 const handleDragStart = (event) => {}
 const handleDragEnd = (event) => {}
-const handleHelpToggle = (event) => {}
-const handleAddToggle = (event) => {}
-const handleAddSubmit = (event) => {}
+const handleHelpToggle = (event)  => {
+    html.help.overlay.style.display = "block"
+}
+
+function 
+//overlay buttons for on and off
+handleHelpCancel(){
+    html.help.overlay.style.display = "none"
+    html.other.add.focus()
+}
+
+const handleAddToggle = () => {
+    html.add.overlay.style.display = 'block'
+}
+
+const handleAddCancel = () => {
+    html.add.overlay.style.display = 'none'
+    html.other.add.focus()
+}
+  //here we are creating the order by calling on the function and getting the values of variuos subsections
+const handleAddSubmit = (event) => {
+    event.preventDefault();
+    const title = html.add.title.value;
+    const table = html.add.table.value;
+    const id = Object.keys(state.orders).length + 1;
+    const created = new Date();
+    const order = {id, title, table, created };
+    state.orders[id] = order;
+    //Appending the oder to the HTML table
+    const orderElement = createOrderHtml(order);
+    html.area.ordered.append(orderElement);
+    html.add.form.reset();
+    html.add.overlay.style.display = 'none';
+    html.other.add.focus()
+
+
+
+//ordered
+//Event listener for the ordered section
+     html.area.ordered.addEventListener('click', (event) => {
+        event.preventDefault()
+//when order is clicked it gets the ID of the order fROM 'data-id' attribute and the id to get the right order
+        if (event.target.classList.contains('order')) {
+            const orderId = event.target.dataset.id;
+            html.edit.title.value = state.orders[orderId].title;
+            html.edit.table.value = state.orders[orderId].table;
+            html.edit.overlay.style.display = "block";
+            
+            //the delete button  removes the information in the DOM
+        html.edit.delete.addEventListener('click', (event) => {
+                event.preventDefault()
+                const existingOrderElement = document.querySelector(`[data-id="${orderId}"]`);
+                existingOrderElement.remove();// html.area.ordered.removeChild(existingOrderElement)
+                html.edit.overlay.style.display = "none";
+            })
+//The submit button that allows for the order to be updated
+        html.edit.form.addEventListener('submit', (event) => {
+                event.preventDefault();
+      
+                state.orders[orderId].title = html.edit.title.value;
+                state.orders[orderId].table = html.edit.table.value;
+                const existingOrderElement = document.querySelector(`[data-id="${orderId}"]`);
+//removes the existing order 
+                existingOrderElement.remove(); 
+                const newOrderElement = createOrderHtml(state.orders[orderId]);
+                newOrderElement.setAttribute('data-id', orderId);
+//and creates new order
+                const select = document.querySelector('[name="column"]')
+                if (select.value === 'ordered') {
+               // console.log('Order has been placed');
+                html.area.ordered.append(newOrderElement);
+                } else if (select.value === 'preparing') {
+                //console.log('Order is being prepared');
+                html.area.preparing.append(newOrderElement);
+                } else if (select.value === 'served') {
+                //console.log('Order has been delivered');
+                html.area.served.append(newOrderElement);
+                }
+                html.edit.overlay.style.display = "none";
+            });
+        }
+    });
+
+
+//preparing column
+
+html.area.preparing.addEventListener('click', (event) => {
+        event.preventDefault()
+    /* Checking if the selected element has the class of ordered and pulls it from the data- id.
+       and populates the order and allows the user to edit or delete*/
+        if (event.target.classList.contains('order')) {
+            const orderId = event.target.dataset.id;
+            html.edit.title.value = state.orders[orderId].title;
+            html.edit.table.value = state.orders[orderId].table;
+            html.edit.overlay.style.display = "block";
+//when an order is deleted it removes it from the preparing as well and stops all other functions
+    html.edit.delete.addEventListener('click', (event) => {
+                event.preventDefault()
+                const existingOrderElement = document.querySelector(`[data-id="${orderId}"]`);
+                existingOrderElement.remove(); 
+                html.edit.overlay.style.display = "none";
+            })
+
+    html.edit.form.addEventListener('submit', (event) => {
+                event.preventDefault();
+                state.orders[orderId].title = html.edit.title.value;
+                state.orders[orderId].table = html.edit.table.value;
+                const existingOrderElement = document.querySelector(`[data-id="${orderId}"]`);
+                existingOrderElement.remove();
+                const newOrderElement = createOrderHtml(state.orders[orderId]);
+                newOrderElement.setAttribute('data-id', orderId);
+                const select = document.querySelector('[name="column"]')
+                if (select.value === 'ordered') {
+                //console.log('Order has been placed');
+                html.area.ordered.append(newOrderElement);
+                } else if (select.value === 'preparing') {
+                //console.log('Order is being prepared');
+                html.area.preparing.append(newOrderElement);
+                } else if (select.value === 'served') {
+                //console.log('Order has been delivered');
+                html.area.served.append(newOrderElement);
+                }
+                html.edit.overlay.style.display = "none";
+            });
+        }
+    });
+
+
+
+    //served block
+    html.area.served.addEventListener('click', (event) => {
+        event.preventDefault()
+        if (event.target.classList.contains('order')) {
+            const orderId = event.target.dataset.id;
+            html.edit.title.value = state.orders[orderId].title;
+            html.edit.table.value = state.orders[orderId].table;
+            html.edit.overlay.style.display = "block";
+    html.edit.delete.addEventListener('click', (event) => {
+                event.preventDefault()
+                const existingOrderElement = document.querySelector(`[data-id="${orderId}"]`);
+                existingOrderElement.remove(); // html.area.served.removeChild(existingOrderElement)
+                html.edit.overlay.style.display = "none";
+            })
+    html.edit.form.addEventListener('submit', (event) => {
+                event.preventDefault();
+                state.orders[orderId].title = html.edit.title.value;
+                state.orders[orderId].table = html.edit.table.value;
+                const existingOrderElement = document.querySelector(`[data-id="${orderId}"]`);
+                existingOrderElement.remove(); // html.area.served.removeChild(existingOrderElement)
+                const newOrderElement = createOrderHtml(state.orders[orderId]);
+                newOrderElement.setAttribute('data-id', orderId);
+                const select = document.querySelector('[name="column"]')
+                if (select.value === 'ordered') {
+                console.log('Order has been placed');
+                html.area.ordered.append(newOrderElement);
+                } else if (select.value === 'preparing') {
+                console.log('Order is being prepared');
+                html.area.preparing.append(newOrderElement);
+                } else if (select.value === 'served') {
+                console.log('Order has been delivered');
+                html.area.served.append(newOrderElement);
+                }
+                html.edit.overlay.style.display = "none";
+            });
+        }
+    });
+};
 const handleEditToggle = (event) => {}
-const handleEditSubmit = (event) => {}
-const handleDelete = (event) => {}
-
-html.add.cancel.addEventListener('click', handleAddToggle)
-html.other.add.addEventListener('click', handleAddToggle)
-html.add.form.addEventListener('submit', handleAddSubmit)
-
+const handleEditCancel = (event) => {
+    html.edit.overlay.style.display = "none"
+}
+html.add.cancel.addEventListener('click', handleAddCancel) //used
+html.other.add.addEventListener('click', handleAddToggle) //used
+html.add.form.addEventListener('submit', handleAddSubmit)  // used
 html.other.grid.addEventListener('click', handleEditToggle)
-html.edit.cancel.addEventListener('click', handleEditToggle)
-html.edit.form.addEventListener('submit', handleEditSubmit)
-html.edit.delete.addEventListener('click', handleDelete)
-
-html.help.cancel.addEventListener('click', handleHelpToggle)
-html.other.help.addEventListener('click', handleHelpToggle)
-
+html.edit.cancel.addEventListener('click', handleEditCancel) //used
+html.help.cancel.addEventListener('click', handleHelpCancel) //used
+html.other.help.addEventListener('click', handleHelpToggle) // used
 for (const htmlColumn of Object.values(html.columns)) {
     htmlColumn.addEventListener('dragstart', handleDragStart)
     htmlColumn.addEventListener('dragend', handleDragEnd)
 }
-
 for (const htmlArea of Object.values(html.area)) {
     htmlArea.addEventListener('dragover', handleDragOver)
 }

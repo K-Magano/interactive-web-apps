@@ -25415,9 +25415,8 @@ export const books = [
 
 /*Created Content Object on this file to reduce the size of the script.
 *This hould help the app load faster because it can be cached separaly.
-Good for planet App as the object is reusable 😂
+Good for planet App as the object is reusable 😁.
 */
-
 
 export const content = {
   header: {

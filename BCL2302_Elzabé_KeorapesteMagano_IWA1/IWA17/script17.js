@@ -15,8 +15,7 @@ const MONTHS = [
 const getDaysInMonth = (year, month) => new Date(year, month + 1, 0).getDate()
 // Only edit below
 const createData = () => {
-     //added const to createData and assigned it to the following variables
-    
+      
     // Bellow are the variables that were assigned by the createData constant
     
     const current = new Date();
@@ -32,12 +31,15 @@ const createData = () => {
     // Offset for starting week from Saturday
          let newDay = firstDay < 6 ? firstDay + 1 : 6;
         for (let i = 0; i < newDay; i++) {
-        week.push(null); // filled in empty cells for days before the first day of the month
+// filled in empty cells for days before the first day of the month
+           week.push(null); 
     }
     for (let day = 1; day <= daysInMonth; day++) {
-        week.push(day); // Used a for loop to add each day of the month to the week array
+// Used a for loop to add each day of the month to the week array
+        week.push(day); 
+    // if week array has 7 days, push it to weeks array and start a new week
         if (week.length === 7) {
-            // if week array has 7 days, push it to weeks array and start a new week
+            
             weeks.push(week);
             week = [];
         }
