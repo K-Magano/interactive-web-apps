@@ -57,7 +57,7 @@ const createCell = (day, isToday) => {
         cell.innerText = day;
         if (isToday) {// Check if isToday is true
             cell.classList.add('table__cell_today');
-        }
+        }   
     }
     return cell;
 };
