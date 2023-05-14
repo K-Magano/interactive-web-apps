@@ -1,10 +1,11 @@
+ //Importing data from "./data.js"
     import { BOOKS_PER_PAGE, authors, genres, books, content } from "./data.js";
-
-    
+   
+ //Select all books as matches and set them to page 1
     const matches = books;
     const page = 1;
     
-// Define two objects, day and night, with RGB color values for dark and light themes
+ // Define two objects, day and night, with RGB color values for dark and light themes
     const css = {
       day: {
         dark: '10, 10, 20',
@@ -16,74 +17,78 @@
       },
     };
 
-  //---- Opens settings for THEME-----
- /*
-  * when the user clicks on the settings (moon and sun) button to change the layout theme */
+  // Opens settings for theme settings
 
+  /*
+  * when the user clicks on the settings (moon and sun) button to change the layout theme
+  */
     content.header.headerSettings.addEventListener("click", () => {
     content.settings.overlay.open = !content.settings.overlay.open;
     });
 
-//----- Submit btn for THEME------
+ //Submit btn for Theme Settings
     content.settings.settingForm.addEventListener('submit', (event) => {
     event.preventDefault()
     content.settings.overlay.close();
     
-// Get the form data as an object
+ // Get the form data as an object
     const formData = new FormData(event.target);
     const result = Object.fromEntries(formData);
  
-/*changes the color scheme of the application to match the selected theme*/
+ //Changes the color scheme of the application to match the selected theme
     document.documentElement.style.setProperty('--color-dark', css[result.theme].dark);
     document.documentElement.style.setProperty('--color-light', css[result.theme].light);
 
-//Saves the selected theme ("day" or "night") to local storage so that the theme persists even when  page is reloads.
-
+ /**
+  Saves the selected theme ("day" or "night") to local storage so that the theme persists even when  page is reloads.
+  */
     localStorage.setItem('theme', result.theme);
+
+ //Determines the user's preferred theme
     v = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'night' : 'day'
 
- // Close the settings overlay if it was open
- if (content.settings.overlay.open){
-  content.settings.overlay.open = false;
- }
-    });
-    document.addEventListener("DOMContentLoaded", () => {
-    const localS = localStorage.getItem('theme');
+ // Close the settings overlay if was open
+    if (content.settings.overlay.open){
+    content.settings.overlay.open = false;
+   }
+ });
+    
+   document.addEventListener("DOMContentLoaded", () => {
+   const localS = localStorage.getItem('theme');
+ //console.log(`LocalStorage theme : ${localS}`);
 
-//console.log(`LocalStorage theme : ${localS}`);
     document.documentElement.style.setProperty('--color-dark', css[localS].dark);
     document.documentElement.style.setProperty('--color-light', css[localS].light);
-
     });
-//--- Close settings ----
+ //--- Close settings ----
 
   content.settings.settingCancel.addEventListener("click", () => {
   content.settings.overlay.close();
-});
 
-//!-----END OF THEMES---
+  });
 
-// Preview page
+ // Preview page
 
-/**
- * This code creates a preview page by extracting a subset of 
- * items from an array called 'matches' and dynamically creating 
- * a button element for each item.
- * 
+ /**
+    This code creates a preview page by extracting a subset of 
+    items from an array called 'matches' and dynamically creating 
+     a button element for each item.
  */
 
-const fragment = document.createDocumentFragment();
-const extracted = matches.slice(0, 36);
+ // Extract the first 36 books 
+   const fragment = document.createDocumentFragment();
+   const extracted = matches.slice(0, 36);
 
-for (const book of extracted) {
-  const element = document.createElement("button");
-  element.classList = "preview";
-  element.dataset.id = book.id;
-  element.dataset.image = book.image;
-  element.dataset.title = book.title;
-  element.dataset.authors = `${authors[book.author]}`;
-  element.dataset.preview = book.id;
-  element.innerHTML = /* html */ `
+ //Loop over the extracted books to create a button element for each book
+  for (const book of extracted) {
+    const element = document.createElement("button");
+    element.classList = "preview";
+    element.dataset.id = book.id;
+    element.dataset.image = book.image;
+    element.dataset.title = book.title;
+    element.dataset.authors = `${authors[book.author]}`;
+    element.dataset.preview = book.id;
+    element.innerHTML = /* html */ `
             <img
                 class="preview__image"
                 src="${book.image}"
@@ -91,29 +96,38 @@ for (const book of extracted) {
             <div class="preview__info">
                 <h3 class="preview__title">${book.title}</h3>
                 <div class="preview__author">${authors[book.author]}</div>
-            </div>
-          `;
-  fragment.appendChild(element);
-}
-content.list.items.appendChild(fragment);
+            </div>`;
 
-// --- SHOW MORE ----
+     fragment.appendChild(element);
+    }
 
-    let remaining = matches.slice(BOOKS_PER_PAGE * page);
+ // Append the button element to the list
+  content.list.items.appendChild(fragment);
 
+ // SHOW MORE
+ /*
+ *To show the additional books when the ''Show more'' button is clicked.
+ *It dynamically creates the button element for each book and appends it to the list.
+ */
+
+ //Extract the remaining books from the matches.
+   let remaining = matches.slice(BOOKS_PER_PAGE, matches.length);
+
+ //Display the remaining books in the Show More button
     content.list.btnList.innerHTML = /*HTML*/ 
     `<span>Show more</span>
-    <span class = "list__remaining">${remaining.length - BOOKS_PER_PAGE}</span>`
+    <span class = "list__remaining">${remaining.length - 36}</span>`
 
     content.list.btnList.addEventListener("click", () => {
       const addList = remaining.slice(0, BOOKS_PER_PAGE);
       const moreList = remaining.length > BOOKS_PER_PAGE;//Boolean, if there are more books, display
       const fragment = document.createDocumentFragment();
+      
       content.list.btnList.innerHTML = /* html */ `
       <span>Show more</span>
       <span class="list__remaining">
-      ${remaining.length - BOOKS_PER_PAGE}</span>`;
-
+      ${remaining.length - 36}</span>`;
+     
     for (let i = 0; i < addList.length; i++) {
         const element = document.createElement("button");
         element.classList.add("preview");
@@ -122,6 +136,7 @@ content.list.items.appendChild(fragment);
         element.dataset.title = addList[i].title;
         element.dataset.authors = `${authors[addList[i].author]}`;
         element.setAttribute("data-preview", addList[i].id);
+        
         element.innerHTML = /* html */ `
           <img class="preview__image" src="${addList[i].image}" />
           <div class="preview__info">
@@ -133,28 +148,23 @@ content.list.items.appendChild(fragment);
       }
 
     content.list.items.appendChild(fragment);
-/**
- * checks whether there are more books in the remaining 
- *  button is updated to display the number of books remaining, 
- * and the remaining array is updated to exclude the books that were just displayed.
- */
+
     if (moreList) {
         content.list.btnList.innerHTML = /* html */ `
         <span>Show more</span>
         <span class="list__remaining">
-        ${remaining.length - BOOKS_PER_PAGE}</span>
+        ${remaining.length - BOOKS_PER_PAGE - 36}</span>
         `;
-        remaining = remaining.slice(0, BOOKS_PER_PAGE);
+        remaining = remaining.slice(BOOKS_PER_PAGE, remaining.length);
         page++;
         } else {
         content.list.btnList.style.display = "none";
         }
       });
-//---END OF SHOW MORE--
 
-//--- Preview Window ----
+ //--- Preview Window ----
 
-/**
+ /**
  * code listens for a click event on a book item,
  * finds the corresponding book from the books array, 
  * and updates the information in the list-active element to display the book's details..
@@ -183,36 +193,32 @@ content.list.items.appendChild(fragment);
     document.querySelector("[data-list-subtitle]").textContent = `${authors[active.author]} (${new Date(active.published).getFullYear()})`;
     document.querySelector("[data-list-description]").textContent = active.description;});
 
-//---- Close Button for preview window----
+ //---- Close Button for preview window----
 
     content.active.overlayClose.addEventListener("click", () => {
     content.active.overlay.close();
     });
 
-//----Search button------
+ //----Search button------
     content.header.headerSearch.addEventListener("click", () => {
     content.search.overlay.toggleAttribute("open");
     });
 
- content.search.findCancel.addEventListener('click', () => {
-  content.search.overlay.close();
- });
+    content.search.findCancel.addEventListener('click', () => {
+    content.search.overlay.close();
+    });
 
+ //Search for book titles.
 
+   function displayTitles(titles) {
+ // Clear the current content before displaying the new titles
+    const listItems = document.querySelector('.list__items');
+    listItems.innerHTML = '';
 
+ // Create a fragment to append the new elements to
+   const fragment = document.createDocumentFragment();
 
- //!showing list dynamically START HERE CHANGE THE ELEMeNTS SO YOU CAN GET THE LIST 
-//Search for book titles.
-
-function displayTitles(titles) {
-  // Clear the current content before displaying the new titles
-  const listItems = document.querySelector('.list__items');
-  listItems.innerHTML = '';
-
-  // Create a fragment to append the new elements to
-  const fragment = document.createDocumentFragment();
-
-  // Loop through the filtered titles and create a new button element for each one
+ // Loop through the filtered titles and create a new button element for each one
   titles.forEach(title => {
     const element = document.createElement("button");
     element.classList.add("preview");
@@ -229,100 +235,91 @@ function displayTitles(titles) {
       </div>
     `;
     fragment.appendChild(element);
-  });
+    });
 
-  // Append the fragment to the list items
-  listItems.appendChild(fragment);
-}
-//-------search titles-----
+ // Append the fragment to the list items
+   listItems.appendChild(fragment);
+  }
 
-const titleInput = document.getElementById("titleInput");
-const searchBar = document.getElementById('search');
-let booksTitles = books;//creating a booksTitles array
+ /**
+ * Two main functions : search book by title and filter books by genre
+ * 
+ */
+ //-------search titles-----
 
-searchBar.addEventListener('keyup', (e) => {
-  const searchString = e.target.value.toLowerCase();
-  const filteredTitles = booksTitles.filter((books) => {
+   const titleInput = document.getElementById("titleInput");
+   const searchBar = document.getElementById("search");
+   let booksTitles = books;//creating a booksTitles array
+
+ /*
+ SearchBar listens for the keyup event to check if the input string matches any book titles
+  in the 'book titles' array
+ */
+
+ searchBar.addEventListener('keyup', (e) => {
+   const searchString = e.target.value.toLowerCase();
+   const filteredTitles = booksTitles.filter((books) => {
    return (
    books.title.toLowerCase().includes(searchString)
-   )
-  });
-  displayTitles(filteredTitles)
-});
+    )
+   });
 
-//!END------------------------
+  if (filteredTitles.length === 0) {
+    const error = document.createElement("div");
+    error.classList.add("error-message");
+    error.innerHTML = "No matching titles found. Please check your spelling and try again.";
+    listItems.innerHTML = '';
+    listItems.appendChild(error);
+  } else {
+    displayTitles(filteredTitles);
+  } 
+ });
 
- //-----Search genres --------
-const placeholder1 = document.createElement("option");
-placeholder1.value = "";
-placeholder1.textContent = "All genre";
-content.search.findGenre.appendChild(placeholder1);
 
-/* for...in loop to iterate over an object called genres. 
-For each key-value pair in the genres object*/
+ /**
+ *'addOptionToSelect' is called twice as arguments.  
+ * Function adds option to the given select element based on the options object.
+ * Event listener filters the books based on selected option and displays them.
+ */
 
-for (const id in genres) {
-  const element = document.createElement("option");
-  element.value = id;
-  element.textContent = `${genres[id]}`;
-  content.search.findGenre.appendChild(element);
-};
+  function addOptionsToSelect(select, options) {
+    const placeholder = document.createElement("option");
+    placeholder.value = "";
+    placeholder.textContent = `All ${select.name}`;
+    select.appendChild(placeholder);
 
-content.search.findGenre.addEventListener("change", (event) => {
-  event.preventDefault();
-  const selectedGenre = event.target.value;
-  const filteredGenres = books.filter((books) => {
-   return selectedGenre === " " || books.genres.includes(selectedGenre);
+  for (const id in options) {
+    const element = document.createElement("option");
+    element.value = id;
+    element.textContent = `${options[id]}`;
+    select.appendChild(element);
+   }
+
+  select.addEventListener("change", (event) => {
+      event.preventDefault();
+      const selectedOption = event.target.value;
+      const filteredTitles = books.filter((book) => {
+      return selectedOption === "" || book[select.name.toLowerCase()].includes(selectedOption);
     });
-  displayGenres(filteredGenres);
-});
+    displayTitles(filteredTitles);
+   });
+  }
 
-content.search.find.addEventListener("click", (event) => {
-  event.preventDefault();
-  const selectedGenre = content.search.findGenre.value;
-  const filteredGenres = books.filter((books) => {
-    return (//There has to be a better
-       books.title.toLowerCase().includes(content.search.findTitle.value.toLowerCase()) &&
-      (selectedGenre === "" || books.genres === books.genres.includes(selectedGenre)) &&
-      (content.search.findAuthor.value === "" || books.author === content.search.findAuthor.value)
+  addOptionsToSelect(content.search.findGenre, genres);
+  addOptionsToSelect(content.search.findAuthor, authors);
+
+ //Listening for a 'click' event and triggers the search based on input
+  content.search.find.addEventListener("click", (event) => {
+    event.preventDefault();
+    const filteredTitles = books.filter((book) => {
+    return (
+      book.title.toLowerCase().includes(content.search.findTitle.value.toLowerCase()) &&
+      (content.search.findGenre.value === "" || book.genres.includes(content.search.findGenre.value)) &&
+      (content.search.findAuthor.value === "" || book.author === content.search.findAuthor.value)
     );
   });
-  displayGenres(filteredGenres);
-  content.search.overlay.toggleAttribute("open");
-});
 
+   displayTitles(filteredTitles);
+   content.search.overlay.toggleAttribute("open");
+   });
 
-
-// ---- Search authors ----
-const placeholder2 = document.createElement("option");
-placeholder2.value = "";
-placeholder2.textContent = "All Authors";
-content.search.findAuthor.appendChild(placeholder2);
-
-for (const id in authors) {
-  const element = document.createElement("option");
-  element.value = id;
-  element.textContent = `${authors[id]}`;
-  content.search.findAuthor.appendChild(element);
-}
-
-content.search.findAuthor.addEventListener("change", (event) => {
-  event.preventDefault();
-  const filteredTitles = books.filter((books) => {
-  
-  });
-  displayTitles(filteredTitles);
-});
-
-content.search.find.addEventListener("click", (event) => {
-  event.preventDefault();
-  const filteredTitles = books.filter((books) => {
-    return (//There has to be a better
-      books.title.toLowerCase().includes(content.search.findTitle.value.toLowerCase()) &&
-      (content.search.findGenre.value === "" || books.genres === content.search.findGenre.value) &&
-      (content.search.findAuthor.value === "" || books.author === content.search.findAuthor.value)
-    );
-  });
-  displayTitles(filteredTitles);
-  content.search.overlay.toggleAttribute("open");
-});
